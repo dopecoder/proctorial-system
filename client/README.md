@@ -1,28 +1,32 @@
-# Testapp
+# Proctorial System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.2.
+This project was developed to provide a college proctorial system for ease of student data and other college or university data to come under a single place and perform analytics to find insights from the data to evaluate the students, subjects, teachers and classrooms based on a criteria.
 
-## Development server
+This project is centered for proctoring VTU students.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## There are two parts:
+ * Server : Contains the expressJS REST API for the Angular 2 front-end.
+ * Client : Contains the Angular 2 app.
+  
+## How to run it?
+* Step 1 : Go to 'server' folder and run ```'npm install'``` or ```'sudo npm install'```, this will install the necessary node_modules for the REST api application.
+* Step 2 : Go to 'client' folder and run ```'npm install'``` or ```'sudo npm install'``` once again, this will install the necessary node_modules for angular 2 application.
+* Step 3 : You need to have mongodb installed, make sure its running at default port 27017, otherwise you will have to change the defualt monogoPort variable in /server/server.js
+* Step 4 : Go to project root, execute ```'npm run-script serverinit'```, this initializes the database and start the server at 8080.
+* Step 5 : Go to 'client' folder and execute 'npm start', this starts the angular 2 app, 
+* Step 6 : Then go to ```http://localhost:4200``` in your browser to watch it work!
 
-## Code scaffolding
+## Screenshot
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+![Alt text](../screenshot.png?raw=true "Optional Title")
+  
+## Getting an error
+  If you are getting an error related to Ports or already running process, then you should kill the already runnning processes by using ```'sudo killall -9 node'```. And kill Angular 2 by getting the process ID of it, execute ```'ps -all'```, look for @angular/cli, get its correspoinding PID, and execute ```'sudo kill -9 "PID"'```.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Run `ng build` to build the angular 2 app under the folder /client
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+If you have any queries you can leave a comment under 'Pull requests', I will reply back. 
