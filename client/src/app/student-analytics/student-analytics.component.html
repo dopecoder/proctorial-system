@@ -1,0 +1,12 @@
+<div class="mdl-grid" *ngIf="charts">
+  <div class="mdl-cell mdl-cell--6-col" *ngFor="let chart of charts">
+    <h3>{{chart.description}}</h3>
+    <x-chartist
+      [data]="chart.data"
+      [type]="chart.type"
+      [options]="chart.options"
+      [responsiveOptions]="chart.responsiveOptions"
+      [events]="chart.events">
+    </x-chartist>
+  </div>
+</div>

@@ -1,0 +1,144 @@
+
+$scope.internal1 = student_marks.internal1;
+$scope.internal2 = student_marks.internal2;
+$scope.internal3 = student_marks.internal3;
+
+<div *ngIf="subject">
+  <h2>{{subject.name}} subject!</h2>
+  <div>
+    <label>id: </label>{{subject._id}}
+  </div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="subject.name" placeholder="name" /><br>
+    <label>id: </label>
+    <input [(ngModel)]="subject.id" placeholder="id" /><br>
+    <label>semester: </label>
+    <input [(ngModel)]="subject.semester" placeholder="semester" /><br>
+    <label>department: </label>
+    <input [(ngModel)]="subject.department" placeholder="department" /><br>
+
+    <!--<form #internalsForm="ngForm" (ngSubmit)="updateInternalMarks(internalsForm)">
+      <label for="internal1">Internal 1</label>
+      <input type="text" name="internal1" id="internal1" [(ngModel)]="student_marks.internal1"><br>
+
+      <label for="internal2">Internal 2</label>
+      <input type="text" name="internal2" id="internal2" [(ngModel)]="student_marks.internal2"><br>
+
+      <label for="internal2">Internal 3</label>
+      <input type="text" name="internal3" id="internal3" [(ngModel)]="student_marks.internal3"><br>
+
+    </form>-->
+
+    <h3>Internal marks</h3>
+      <form #internalsForm="ngForm" (ngSubmit)="updateInternalMarks(internalsForm)">
+        <ul class="demo-list-three mdl-list fluidic" *ngIf="student_marks">
+          <li class="mdl-list__item mdl-list__item--three-line">
+            <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">person</i>
+            <label for="internal1">Internal 1</label>
+            <input type="text" name="internal1" id="internal1" [(ngModel)]="student_marks.internal1"><br>
+          </span>
+          <span class="mdl-list__item-secondary-content">
+            <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+          </span>
+          </li>
+          <li class="mdl-list__item mdl-list__item--three-line">
+            <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">person</i>
+            <label for="internal2">Internal 2</label>
+            <input type="text" name="internal2" id="internal2" [(ngModel)]="student_marks.internal2"><br>
+          </span>
+          <span class="mdl-list__item-secondary-content">
+            <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+          </span>
+          </li>
+          <li class="mdl-list__item mdl-list__item--three-line">
+            <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">person</i>
+            <label for="internal3">Internal 3</label>
+            <input type="text" name="internal3" id="internal3" [(ngModel)]="student_marks.internal3"><br>
+          </span>
+          <span class="mdl-list__item-secondary-content">
+            <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+          </span>
+          </li>
+        </ul>
+        <button type="submit">Update marks</button>
+      </form>
+
+    <h3>Attendance</h3>
+    <form #attendanceForm="ngForm" (ngSubmit)="updateAttendance(attendanceForm)">
+      <ul class="demo-list-three mdl-list fluidic" *ngIf="attendance">
+        <li class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+          <label for="quarter1">Quarter 1</label>
+          <input type="text" name="quarter1" id="quarter1" [(ngModel)]="attendance.quarter1"><br>
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+        </span>
+        </li>
+        <li class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+          <label for="quarter2">Quarter 2</label>
+          <input type="text" name="quarter2" id="quarter2" [(ngModel)]="attendance.quarter2"><br>
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+        </span>
+        </li>
+        <li class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+          <label for="quarter3">Quarter 3</label>
+          <input type="text" name="quarter3" id="quarter3" [(ngModel)]="attendance.quarter3"><br>
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+        </span>
+        </li>
+      </ul>
+      <button type="submit">Update attendance</button>
+    </form>
+
+    <h3>Instructors</h3>
+    <ul class="demo-list-three mdl-list fluidic" *ngIf="instructors">
+      <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let instructor of instructors" (click)=goToInstructorDetail(instructor)>
+        <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+        <span>{{ instructor.name }} </span>
+        <span class="mdl-list__item-text-body">
+          <span>Department: {{instructor.department}}</span><br>
+          <span>Year of joining: {{instructor.year_of_joining}}</span>
+        </span>
+      </span>
+      <span class="mdl-list__item-secondary-content">
+        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+      </span>
+      </li>
+    </ul>
+   </div>
+
+
+   <div class="mdl-grid" *ngIf="charts">
+     <div class="mdl-cell mdl-cell--6-col" *ngFor="let chart of charts">
+       <h3>{{chart.description}}</h3>
+       <x-chartist
+         [data]="chart.data"
+         [type]="chart.type"
+         [options]="chart.options"
+         [responsiveOptions]="chart.responsiveOptions"
+         [events]="chart.events">
+       </x-chartist>
+       <h4>{{chart.analysis}}</h4>
+     </div>
+   </div>
+
+  <button (click)="goBack()">Back</button>
+  <!--<button (click)="save()">Save</button>-->
+
+
+</div>

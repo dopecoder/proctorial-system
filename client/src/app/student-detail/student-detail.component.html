@@ -1,0 +1,80 @@
+<div *ngIf="student">
+  <h2>{{ student.first_name }} {{ student.last_name }} details</h2>
+  <div>
+    <label>id: </label>{{student._id}}</div>
+  <div>
+    <label>first name: </label>
+    <input [(ngModel)]="student.first_name" placeholder="first_name" /><br>
+    <label>last name: </label>
+    <input [(ngModel)]="student.last_name" placeholder="last_name" /><br>
+    <label>usn no: </label>
+    <input [(ngModel)]="student.usn" placeholder="usn" /><br>
+    <label>email: </label>
+    <input [(ngModel)]="student.email" placeholder="email" /><br>
+    <label>semester: {{ student.semester }}</label><br>
+    <label>department: {{ student.department }}</label><br>
+    <label>section: {{student.section}}</label><br>
+    <label>year of joining: </label>
+    <input [(ngModel)]="student.year_of_joining" placeholder="year_of_joining" /><br>
+    <label>current backlogs: </label>
+    <input [(ngModel)]="student.backlogs.current" placeholder="backlogs_current" /><br>
+    <label>dead backlogs: </label>
+    <input [(ngModel)]="student.backlogs.dead" placeholder="backlogs_dead" /><br>
+
+    <h3>Marks</h3>
+    <label>Elementary:</label>
+    <input [(ngModel)]="student.marks.elementary" placeholder="elementary school percentage" /><br>
+    <label>Associate:</label>
+    <input [(ngModel)]="student.marks.associate" placeholder="associate degree percentage" /><br>
+    <label>First semester:</label>
+    <input [(ngModel)]="student.marks.first" placeholder="first semester percentage" /><br>
+    <label>Second semester:</label>
+    <input [(ngModel)]="student.marks.second" placeholder="second semester percentage" /><br>
+    <label>Third semester:</label>
+    <input [(ngModel)]="student.marks.third" placeholder="third semester percentage" /><br>
+    <label>Fourth semester:</label>
+    <input [(ngModel)]="student.marks.fourth" placeholder="fourth semester percentage" /><br>
+    <label>Fifth semester:</label>
+    <input [(ngModel)]="student.marks.fifth" placeholder="fifth semester percentage" /><br>
+    <label>Sixth semester:</label>
+    <input [(ngModel)]="student.marks.sixth" placeholder="sixth semester percentage" /><br>
+    <label>Seventh semester:</label>
+    <input [(ngModel)]="student.marks.seventh" placeholder="seventh semester percentage" /><br>
+    <label>Eighth semester:</label>
+    <input [(ngModel)]="student.marks.eighth" placeholder="eighth semester percentage" /><br>
+
+    <h3>Current subjects</h3>
+    <ul class="demo-list-three mdl-list fluidic" *ngIf="subjects">
+      <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let subject of subjects" (click)=goToSubjectDetail(subject)>
+        <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+        <span>{{ subject.name }}</span>
+        <span class="mdl-list__item-text-body">
+          <span>Department: {{subject.department}}</span>
+          <span>Semester: {{subject.semester}}</span>
+        </span>
+      </span>
+      <span class="mdl-list__item-secondary-content">
+        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+      </span>
+      </li>
+    </ul>
+   </div>
+
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+
+  <div class="mdl-grid" *ngIf="charts">
+    <div class="mdl-cell mdl-cell--6-col" *ngFor="let chart of charts">
+      <h3>{{chart.description}}</h3>
+      <x-chartist
+        [data]="chart.data"
+        [type]="chart.type"
+        [options]="chart.options"
+        [responsiveOptions]="chart.responsiveOptions"
+        [events]="chart.events">
+      </x-chartist>
+      <h4>{{chart.analysis}}</h4>
+    </div>
+  </div>
+</div>

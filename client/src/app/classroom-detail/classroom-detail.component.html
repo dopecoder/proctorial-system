@@ -1,0 +1,56 @@
+<div *ngIf="classroom">
+  <h2>{{classroom.name}} details!</h2>
+  <div>
+    <label>id: </label>{{classroom._id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="classroom.name" placeholder="name" /><br>
+    <label>section: </label>
+    <input [(ngModel)]="classroom.section" placeholder="section" /><br>
+    <label>semester: </label>
+    <input [(ngModel)]="classroom.semester" placeholder="semester" /><br>
+    <label>department: </label>
+    <input [(ngModel)]="classroom.department" placeholder="department" /><br>
+    <label>year of passing: </label>
+    <input [(ngModel)]="classroom.year_of_passing" placeholder="year_of_passing" /><br>
+    <h3>Students</h3>
+
+    <ul class="demo-list-three mdl-list fluidic" *ngIf="students">
+      <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let student of students" (click)=goToDetail(student)>
+        <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+        <span>{{ student.first_name }} {{ student.last_name }}</span>
+        <span class="mdl-list__item-text-body">
+          <span>Department: {{student.department}}</span><br>
+          <span>Semester: {{student.semester}}</span>
+        </span>
+      </span>
+      <span class="mdl-list__item-secondary-content">
+        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+      </span>
+      </li>
+    </ul>
+    <button (click)="createStudent()">Add student</button>
+
+    <h3>Subjects</h3>
+    <ul class="demo-list-three mdl-list fluidic" *ngIf="subjects">
+      <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let subject of subjects" (click)=goToSubjectDetail(subject)>
+        <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+        <span>{{ subject.name }}</span>
+        <span class="mdl-list__item-text-body">
+          <span>Department: {{subject.department}}</span><br>
+          <span>Semester: {{subject.semester}}</span>
+        </span>
+      </span>
+      <span class="mdl-list__item-secondary-content">
+        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+      </span>
+      </li>
+    </ul>
+   </div>
+  <button (click)="createSubject()">Add subject</button>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+
+</div>

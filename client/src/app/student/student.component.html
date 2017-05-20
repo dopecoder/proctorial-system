@@ -1,0 +1,15 @@
+<ul class="demo-list-three mdl-list fluidic" *ngIf="students">
+  <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let student of students" (click)=goToDetail(student)>
+    <span class="mdl-list__item-primary-content">
+      <i class="material-icons mdl-list__item-avatar">person</i>
+      <span>{{ student.first_name }} {{ student.last_name }}</span>
+      <span class="mdl-list__item-text-body">
+        <span>Department: {{student.department}}</span>
+        <span>Semester: {{student.semester}}</span>
+      </span>
+    </span>
+    <span class="mdl-list__item-secondary-content">
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+    </span>
+  </li>
+</ul>

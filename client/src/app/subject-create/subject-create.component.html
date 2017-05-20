@@ -1,0 +1,15 @@
+<div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="subject.name" placeholder="name" /><br>
+    <label>section: </label>
+    <input [(ngModel)]="subject.id" placeholder="section" /><br>
+    <label>semester: </label>
+    <input [(ngModel)]="subject.semester" placeholder="semester" /><br>
+    <label>department: </label>
+    <input [(ngModel)]="subject.department" placeholder="department" /><br>
+    <!--need to show instructors-->
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>

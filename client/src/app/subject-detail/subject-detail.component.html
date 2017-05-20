@@ -1,0 +1,98 @@
+<div *ngIf="subject">
+  <h2>{{subject.name}} subject!</h2>
+  <div>
+    <label>id: </label>{{subject._id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="subject.name" placeholder="name" /><br>
+    <label>id: </label>
+    <input [(ngModel)]="subject.id" placeholder="id" /><br>
+    <label>semester: </label>
+    <input [(ngModel)]="subject.semester" placeholder="semester" /><br>
+    <label>department: </label>
+    <input [(ngModel)]="subject.department" placeholder="department" /><br>
+
+    <form #portionForm="ngForm" (ngSubmit)="updatePortion(portionForm)" *ngIf="portionCompletion">
+      <ul class="demo-list-three mdl-list fluidic" *ngIf="attendance">
+        <li class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+          <label for="feb">February</label>
+          <input type="text" name="feb" id="feb" [(ngModel)]="portionCompletion.Feb"><br>
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+        </span>
+        </li>
+        <li class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+          <label for="march">March</label>
+          <input type="text" name="march" id="march" [(ngModel)]="portionCompletion.March"><br>
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+        </span>
+        </li>
+        <li class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+          <label for="april">April</label>
+          <input type="text" name="april" id="april" [(ngModel)]="portionCompletion.April"><br>
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+        </span>
+        </li>
+        <li class="mdl-list__item mdl-list__item--three-line">
+          <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+          <label for="may">May</label>
+          <input type="text" name="may" id="may" [(ngModel)]="attendance.May"><br>
+        </span>
+        <span class="mdl-list__item-secondary-content">
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+        </span>
+        </li>
+      </ul>
+      <button type="submit">Update portions</button>
+    </form>
+
+    <h3>Instructors</h3>
+
+    <ul class="demo-list-three mdl-list fluidic" *ngIf="instructors">
+      <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let instructor of instructors" (click)=goToInstructorDetail(instructor)>
+        <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+        <span>{{ instructor.name }} </span>
+        <span class="mdl-list__item-text-body">
+          <span>Department: {{instructor.department}}</span><br>
+          <span>Year of joining: {{instructor.year_of_joining}}</span>
+        </span>
+      </span>
+      <span class="mdl-list__item-secondary-content">
+        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+      </span>
+      </li>
+    </ul>
+   </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+
+  <button (click)="createInstructor()">Add Instructor</button>
+
+  <div class="mdl-grid" *ngIf="charts">
+    <div class="mdl-cell mdl-cell--6-col" *ngFor="let chart of charts">
+      <h3>{{chart.description}}</h3>
+      <x-chartist
+        [data]="chart.data"
+        [type]="chart.type"
+        [options]="chart.options"
+        [responsiveOptions]="chart.responsiveOptions"
+        [events]="chart.events">
+      </x-chartist>
+      <h4>{{chart.analysis}}</h4>
+    </div>
+  </div>
+
+</div>

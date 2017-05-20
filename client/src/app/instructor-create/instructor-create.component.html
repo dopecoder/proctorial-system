@@ -1,0 +1,14 @@
+<div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="instructor.name" placeholder="name" /><br>
+    <label>section: </label>
+    <input [(ngModel)]="instructor.id" placeholder="section" /><br>
+    <label>department: </label>
+    <input [(ngModel)]="instructor.department" placeholder="department" /><br>
+    <label>year of joining: </label>
+    <input [(ngModel)]="instructor.year_of_joining" placeholder="year of joining" /><br>
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>
