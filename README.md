@@ -18,7 +18,7 @@ This project is centered for proctoring VTU students.
 
 ## Screenshot
 
-![Alt text](../screenshot.png?raw=true "Optional Title")
+![Alt text](./screenshot.png?raw=true "Optional Title")
   
 ## Getting an error
   If you are getting an error related to Ports or already running process, then you should kill the already runnning processes by using ```'sudo killall -9 node'```. And kill Angular 2 by getting the process ID of it, execute ```'ps -all'```, look for @angular/cli, get its correspoinding PID, and execute ```'sudo kill -9 "PID"'```.
