@@ -1,5 +1,5 @@
 .demo-card-wide.mdl-card {
-  width: 512px;
+  width: initial;
 }
 .demo-card-wide > .mdl-card__title {
   color: #fff;

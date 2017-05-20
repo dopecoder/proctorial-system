@@ -1,7 +1,7 @@
 {
   "name": "proctorial-system",
   "scripts": {
-    "start": "service mongod start && node server/server.js && ng serve /client/.angular-cli.json"
+    "serverinit": "service mongod start && node server/server.js"
   },
   "author": "Nithin rao",
   "license": "MIT",

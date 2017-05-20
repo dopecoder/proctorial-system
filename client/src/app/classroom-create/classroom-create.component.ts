@@ -28,7 +28,7 @@ export class ClassroomCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.classroom = new Classroom('', '', '', '', 0);
+    this.classroom = new Classroom('', '', 0, '', 0);
     this.classroom.students = [];
   }
 

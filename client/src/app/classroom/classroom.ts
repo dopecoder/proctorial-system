@@ -12,13 +12,13 @@ export class Classroom {
   _id : String;
   name : String;
   section : String;
-  semester : String;
+  semester : Number;
   department : String;
   year_of_passing : Number;
   students : StudentReference[];
   subjects : SubjectReference[];
 
-  constructor(name: String, section : String, semester : String, department : String, year_of_passing : Number){
+  constructor(name: String, section : String, semester : Number, department : String, year_of_passing : Number){
       this.name = name;
       this.section = section;
       this.semester = semester;
