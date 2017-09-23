@@ -1,38 +1,64 @@
-<!-- The drawer is always open in large screens. The header is always shown,
-  even in small screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-            mdl-layout--fixed-header">
-  <header class="mdl-layout__header default-primary-color">
-    <div class="mdl-layout__header-row">
-      <div class="mdl-layout-spacer"></div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-        <label class="mdl-button mdl-js-button mdl-button--icon"
-               for="fixed-header-drawer-exp">
-          <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield__expandable-holder">
-          <input class="mdl-textfield__input" type="text" name="sample"
-                 id="fixed-header-drawer-exp">
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <div class="navbar-header" style="background-color:#00E5FF;" > <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
+            <div class="top-left-part"><!--<a class="logo" href="index.html"><b><img src="../assets/plugins/images/pixeladmin-logo.png" alt="home" /></b><span class="hidden-xs"><img src="../assets/plugins/images/pixeladmin-text.png" alt="home" /></span></a>--></div>
+            <ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
+                <li>
+                    <form role="search" class="app-search hidden-xs">
+                        <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a>
+                    </form>
+                </li>
+            </ul>
+            <ul class="nav navbar-top-links navbar-right pull-right">
+                <li>
+                    <a class="profile-pic" href="#"> <img src="../assets/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Nithin Rao</b> </a>
+                </li>
+            </ul>
         </div>
-      </div>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title default-primary-color" style="color: white;">Proctorial System</span>
-    <nav class="mdl-navigation">
-     <li routerLinkActive="active"> <a class="mdl-navigation__link" [routerLink]="['/home']" >home</a></li>
-     <li routerLinkActive="active"> <a class="mdl-navigation__link" [routerLink]="['/classrooms']" >Classes</a></li>
-     <li routerLinkActive="active"> <a class="mdl-navigation__link" [routerLink]="['/students']" >Students</a></li>
-     <li routerLinkActive="active"> <a class="mdl-navigation__link" [routerLink]="['/classroom-analytics']" >Classroom analytics</a></li>
-     <li routerLinkActive="active"> <a class="mdl-navigation__link" [routerLink]="['/student-analytics']" >Student analytics</a></li>
+        <!-- /.navbar-header -->
+        <!-- /.navbar-top-links -->
+        <!-- /.navbar-static-side -->
     </nav>
-  </div>
-  <main class="mdl-layout__content">
-    <div class="page-content">
-        <div class="container">
+    <!-- Left navbar-header -->
+    <div class="navbar-default sidebar" role="navigation"  style="background-color:#0a595e;" >
+        <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+            <ul class="nav" id="side-menu">
+                <li style="padding: 10px 0 0;" routerLinkActive="active">
+                    <a [routerLink]="['/home']"  class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/profile']" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Profile</span></a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/classrooms']" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i><span class="hide-menu">Classrooms</span></a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/students']" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i><span class="hide-menu">Students</span></a>
+                </li>
+                <!--<li routerLinkActive="active">
+                    <a [routerLink]="['/classroom-analytics']" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Classroom analytics</span></a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/student-analytics']" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Student analytics</span></a>
+                </li>-->
+                <li routerLinkActive="active">
+                    <a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i><span class="hide-menu">Error 404</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Left navbar-header end -->
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
             <router-outlet></router-outlet>
         </div>
+        <!-- /.container-fluid -->
+        <footer class="footer text-center"> 2017 &copy; </footer>
     </div>
-  </main>
+    <!-- /#page-wrapper -->
 </div>

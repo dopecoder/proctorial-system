@@ -19,6 +19,7 @@ import { SubjectService } from '../subject/subject.service'
 })
 
 export class ClassroomDetailComponent implements OnInit {
+  years = [2018, 2019, 2020, 2021, 2022, 2023]
   classroom: Classroom;
   students: Student[];
   subjects: Subject[];

@@ -30,6 +30,8 @@ import { SubjectComponent } from './subject/subject.component';
 import { SubjectCreateComponent } from './subject-create/subject-create.component';
 import { SubjectDetailComponent } from './subject-detail/subject-detail.component';
 import { StudentSubjectDetailComponent } from './student-subject-detail/student-subject-detail.component';
+import { CreateClassroomComponent } from './create-classroom/create-classroom.component'
+import { ProfileComponent } from './profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { StudentSubjectDetailComponent } from './student-subject-detail/student-
     SubjectComponent,
     SubjectCreateComponent,
     SubjectDetailComponent,
-    StudentSubjectDetailComponent
+    StudentSubjectDetailComponent,
+    CreateClassroomComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

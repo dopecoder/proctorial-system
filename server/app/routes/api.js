@@ -197,7 +197,7 @@ router.route('/Student/:student_id')
 		if (err)
 		res.send(err);
 
-		console.log(student);
+		console.log(student.marks);
 
 		//update the required fields
 		student.classroom_id = req.body.classroom_id || student.classroom_id;
@@ -209,16 +209,16 @@ router.route('/Student/:student_id')
 		student.semester = req.body.semester || student.semester;
 		student.section  = req.body.section || student.section;
 		student.year_of_joining  = req.body.year_of_joining || student.year_of_joining;
-		student.marks.elementary = req.body.marks.elementary || student.body.marks.elementary;
-		student.marks.associate = req.body.marks.associate || student.body.marks.associate;
-		student.marks.first = req.body.marks.first || student.body.marks.first;
-		student.marks.second = req.body.marks.second || student.body.marks.second;
-		student.marks.third = req.body.marks.third || student.body.marks.third;
-		student.marks.fourth = req.body.marks.fourth || student.body.marks.fourth;
-		student.marks.fifth = req.body.marks.fifth || student.body.marks.fifth;
-		student.marks.sixth = req.body.marks.sixth || student.body.marks.sixth;
-		student.marks.seventh = req.body.marks.seventh || student.body.marks.seventh;
-		student.marks.eighth = req.body.marks.eighth || student.body.marks.eighth;
+		student.marks.elementary = req.body.marks.elementary || student.marks.elementary;
+		student.marks.associate = req.body.marks.associate || student.marks.associate;
+		student.marks.first = req.body.marks.first || student.marks.first;
+		student.marks.second = req.body.marks.second || student.marks.second;
+		student.marks.third = req.body.marks.third || student.marks.third;
+		student.marks.fourth = req.body.marks.fourth || student.marks.fourth;
+		student.marks.fifth = req.body.marks.fifth || student.marks.fifth;
+		student.marks.sixth = req.body.marks.sixth || student.marks.sixth;
+		student.marks.seventh = req.body.marks.seventh || student.marks.seventh;
+		student.marks.eighth = req.body.marks.eighth || student.marks.eighth;
 		student.backlogs = req.body.backlogs || { current:0, dead:0};
 
 		student.save(function(err) {
@@ -431,13 +431,14 @@ router.route('/Subject')
 // create a bear (accessed at POST http://localhost:8080/api/Subject)
 .post(function(req, res) {
 
-	if(req.body.name == undefined || req.body.department == undefined || req.body.semester == undefined || req.body.id == undefined){
+	if(req.body.name == undefined || req.body.department == undefined || req.body.semester == undefined || req.body.section == undefined){
 		res.json({"message":"submit all the details."})
 	}else{
 		//crete classroom object
 		var subject = new Subject({
 			name : req.body.name,
-			id : req.body.id,
+			//id : req.body.id,
+			section: req.body.section,
 			department: req.body.department,
 			semester : req.body.semester,
 			instructors : req.body.instructors || Array(),
@@ -492,6 +493,7 @@ router.route('/Subject/:subject_id')
 		subject.name = req.body.name || subject.name;
 		subject.id = req.body.id || subject.id,
 		subject.department = req.body.department || subject.department;
+		subject.section = req.body.section || subject.section;
 		subject.semester = req.body.semester || subject.semester;
 		subject.internal_marks = req.body.internal_marks || subject.internal_marks;
 		subject.attendance = req.body.attendance || subject.attendance;

@@ -1,16 +1,49 @@
-<div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="classroom.name" placeholder="name" /><br>
-    <label>section: </label>
-    <input [(ngModel)]="classroom.section" placeholder="section" /><br>
-    <label>semester: </label>
-    <input [(ngModel)]="classroom.semester" placeholder="semester" /><br>
-    <label>department: </label>
-    <input [(ngModel)]="classroom.department" placeholder="department" /><br>
-    <label>year of passing: </label>
-    <input [(ngModel)]="classroom.year_of_passing" placeholder="year of passing" /><br>
-  </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Classroom</h4> 
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
+        <ol class="breadcrumb">
+            <li><a href="#">Classroom</a></li>
+            <li class="active">Add Classroom</li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="white-box">
+            <h3 class="box-title">Add Classroom</h3> 
+                <div>    
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" [(ngModel)]="classroom.name" id="name" required>
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="section">Section</label>
+                      <input type="text" class="form-control" [(ngModel)]="classroom.section" id="section">
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <input type="text" class="form-control" [(ngModel)]="classroom.semester" id="semester">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="year_of_passing">Year of passing</label>
+                        <input type="text" class="form-control" [(ngModel)]="classroom.year_of_passing" id="year_of_passing">
+                    </div>
+                
+                    <div class="form-group">
+                      <label for="department">Department</label>
+                      <select class="form-control" id="department" [(ngModel)]="classroom.department" required>
+                        <option *ngFor="let dept of departments" [value]="dept">{{dept}}</option>
+                      </select>
+                  </div>
+                <button (click)="goBack()">Back</button>
+                <button (click)="save()">Save</button>
+              </div>
+        </div>
+    </div>
 </div>

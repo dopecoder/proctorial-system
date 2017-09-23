@@ -21,6 +21,7 @@ import { portionReference } from '../subject/subject'
 })
 
 export class SubjectCreateComponent implements OnInit {
+  departments = ["Computer science", "Other department"]
   subject: Subject;
   classroom: Classroom;
   classId: String;
@@ -35,10 +36,7 @@ export class SubjectCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.subject = new Subject('', '', '', 0);
-    this.subject.instructors = [];
-    this.subject.internal_marks = [];
-    this.subject.attendance = [];
+    this.subject = new Subject('', '', '', null, '');
     //this.subject.portionCompletion = {Feb:0, March:0, April:0, May:0} as portionReference;
     //this.portionCompletion = this.subject.portionCompletion;
     this.route.params
@@ -59,7 +57,7 @@ export class SubjectCreateComponent implements OnInit {
               console.log(subject);
               this.subject = subject;
               this.updateClassroom();
-              //this.goBack();
+              this.goBack();
       });
   }
   getClassroom(): void{

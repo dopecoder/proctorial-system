@@ -22,6 +22,7 @@ import { SubjectReference } from '../classroom/classroom'
 })
 
 export class StudentCreateComponent implements OnInit {
+  years = [2012, 2013, 2014, 2015, 2016, 2017];
   student: Student;
   classrooom : Classroom;
   classId: String;
@@ -38,20 +39,20 @@ export class StudentCreateComponent implements OnInit {
 
   ngOnInit() {
 
-    let backlogs = { current : 0, dead : 0 };
+    let backlogs = { current :  null, dead :  null };
     let marks = {
-      elementary:0,
-      associate:0,
-      first:0,
-      second:0,
-      third:0,
-      fourth:0,
-      fifth:0,
-      sixth:0,
-      seventh:0,
-      eighth:0
+      elementary: null,
+      associate: null,
+      first: null,
+      second: null,
+      third: null,
+      fourth: null,
+      fifth: null,
+      sixth: null,
+      seventh: null,
+      eighth: null
     };
-    this.student = new Student('', '', '', '', '', 0, 0, '', backlogs, marks);
+    this.student = new Student('', '', '', '', '',  null,  null, '', backlogs, marks);
     this.route.params
     //.switchMap((params: Params) => this.classroomService.getClassroom(params['id']))
     .subscribe(params => {
@@ -76,6 +77,7 @@ export class StudentCreateComponent implements OnInit {
               this.student = student;
               this.updateClassroom();
               this.getSubjects(student);
+              this.goBack();
       });
   }
 

@@ -1,15 +1,30 @@
-<ul class="demo-list-three mdl-list fluidic" *ngIf="students">
-  <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let student of students" (click)=goToDetail(student)>
-    <span class="mdl-list__item-primary-content">
-      <i class="material-icons mdl-list__item-avatar">person</i>
-      <span>{{ student.first_name }} {{ student.last_name }}</span>
-      <span class="mdl-list__item-text-body">
-        <span>Department: {{student.department}}</span>
-        <span>Semester: {{student.semester}}</span>
-      </span>
-    </span>
-    <span class="mdl-list__item-secondary-content">
-      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-    </span>
-  </li>
-</ul>
+<div *ngIf="students">
+    <div class="row bg-title">
+      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Students</h4>
+      </div>
+      <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+          <li><a>Students</a></li>
+        </ol>
+      </div>
+    </div>
+</div>
+<div class="row" *ngIf="students">
+    <div class="col-md-12 col-lg-6 col-sm-12" *ngFor="let student of students" (click)=goToDetail(student)>
+        <div class="white-box">
+            <div class="comment-center">
+                <div class="comment-body">
+                    <div class="user-img"> <img src="../assets/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
+                    <div class="mail-contnet">
+                        <h5>{{ student.first_name }} {{ student.last_name }}</h5> 
+                        <span class="mail-desc">
+                            <span>Department: {{student.department}}</span><br>
+                            <span>Semester: {{student.semester}}</span>
+                        </span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-left">August 28, 2017</span>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

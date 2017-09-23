@@ -1,14 +1,47 @@
-<div *ngIf="instructor">
-  <h2>{{instructor.name}} details!</h2>
-    <label>name: </label>
-    <input [(ngModel)]="instructor.name" placeholder="name" /><br>
-    <label>id: </label>
-    <input [(ngModel)]="instructor.id" placeholder="id" /><br>
-    <label>department: </label>
-    <input [(ngModel)]="instructor.department" placeholder="department" /><br>
-    <label>year of joining: </label>
-    <input [(ngModel)]="instructor.year_of_joining" placeholder="year_of_joining" /><br>
 
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
-</div>
+<div *ngIf="instructor">
+    <div class="row bg-title">
+      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Instructor</h4>
+      </div>
+      <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+          <li><a href="#">Classroom</a></li>
+          <li>Subject</li>
+          <li>Add Instructor</li>
+        </ol>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+  
+  
+    <div class="row">
+      <div class="col-md-8">
+        <div class="white-box">
+          <h3 class="box-title ">Add Instructor</h3>
+          <div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" [(ngModel)]="instructor.name" id="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="department">Department</label>
+              <select class="form-control" id="department" [(ngModel)]="instructor.department" required>
+                          <option *ngFor="let dept of departments" [value]="dept">{{dept}}</option>
+                        </select>
+            </div>
+
+            <div class="form-group">
+                <label for="year_of_joining">Year of joining</label>
+                <select class="form-control" id="year_of_joining" [(ngModel)]="instructor.year_of_joining" required>
+                            <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                          </select>
+              </div>
+            <a (click)="goBack()" class="btn btn-primary">Back</a>
+            <a (click)="save()" class="btn btn-primary">Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

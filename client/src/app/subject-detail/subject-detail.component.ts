@@ -44,6 +44,7 @@ interface data {
 })
 
 export class SubjectDetailComponent implements OnInit {
+  departments = ["Computer science", "Other department"]
   subject: Subject;
   instructors: Instructor[];
   charts: Chart[];
@@ -128,8 +129,14 @@ export class SubjectDetailComponent implements OnInit {
         labels.push(this.subject.internal_marks[i].internal1);
         series.push(this.subject.attendance[i].quarter1);
     }
+
     var ser = [series];
-    analysis = "You can observe the various scattered attendance vs marks."
+    analysis = "You can observe the various scattered attendance vs marks data points of students"
+
+    if(series.length === 0){
+      analysis = "Data needs to be updated for analystics"
+    }
+
     return {
     type: 'Line', //attendance vs marks
     data: {labels:labels, series:ser},
@@ -168,6 +175,12 @@ export class SubjectDetailComponent implements OnInit {
     }else {
       analysis = "This subject is critically less attended by students."
     }
+
+
+    if(!cat1 && ! cat2 && !cat3 && !cat4){
+      analysis = "Data needs to be updated for analystics"
+    }
+    
     var labels = [cat1, cat2, cat3, cat4]
     return {
       type: 'Pie', //Student attendence falling range
@@ -220,6 +233,13 @@ export class SubjectDetailComponent implements OnInit {
     }else {
       analysis = "This subject is critical as most of them have highly poor score."
     }
+
+
+    if(!cat1 && ! cat2 && !cat3 && !cat4 && !cat5){
+      analysis = "Data needs to be updated for analystics"
+    }
+    
+
     return {
       type: 'Bar', // Internals
       data: {labels:labels, series:series},
@@ -265,6 +285,10 @@ export class SubjectDetailComponent implements OnInit {
     }else if(no > yes){
       analysis = "This subject needs attention."
     }
+
+    if(!yes && !no){
+      analysis = "Data needs to be updated for analystics"
+    }
     /*
     return {
       type: 'Bar', // Internals
@@ -304,12 +328,12 @@ export class SubjectDetailComponent implements OnInit {
   }
 
 
-
   createInstructor(): void {
     this.router.navigate(['/instructorcreate', this.subject._id]);
   }
 
   save(): void {
+    console.log(this.subject);
     this.subjectService.update(this.subject)
       .then(() => this.goBack());
   }

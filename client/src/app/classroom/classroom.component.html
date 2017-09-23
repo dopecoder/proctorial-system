@@ -1,32 +1,43 @@
-
-<h3>Classrooms</h3>
-<div style="background-color:aquamarine; margin:10px;" >
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" (click)="createClassroom()">
-    Add classroom
-  </button>
+<div class="row bg-title">
+  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    <h4 class="page-title">Classrooms</h4>
+  </div>
+  <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+    <ol class="breadcrumb">
+      <li><a href="#">Classrooms</a></li>
+    </ol>
+  </div>
+  <!-- /.col-lg-12 -->
 </div>
-<div class="mdl-grid" *ngIf="classrooms">
-  <div class="mdl-cell mdl-cell--3-col" *ngFor="let classroom of classrooms">
-      <div class="demo-card-wide mdl-card mdl-shadow--2dp classroom">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">{{classroom.name}}</h2>
-          </div>
-        <div class="mdl-card__supporting-text">
-          <span>Semester : {{classroom.semester}}</span><br>
-          <span>Section : {{classroom.section}}</span><br>
-          <span>Department : {{classroom.department}}</span><br>
-          <span>Batch : {{classroom.year_of_passing-4}}</span>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="gotoDetail(classroom)">
-            open
-          </a>
-        </div>
-        <div class="mdl-card__menu">
-          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-          <i class="material-icons">share</i>
-        </button>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-inverse" style="background-color: #1DE9B6; border-color: #333; padding:20px;">
+      <div class="card-block">
+        <h3 class="card-title" >Add Classroom</h3>
+        <p class="card-text">Start adding classrooms right from here.</p>
+        <a class="btn btn-primary" (click)="createClassroom()">Add classroom</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="classrooms">
+  <div class="col-md-4" *ngFor="let classroom of classrooms">
+    <div class="white-box">
+      <div class="card">
+        <img class="card-img-top" src="../assets/classroom.jpg" alt="Card image cap" style="width:100%;">
+        <div class="card-block">
+          <h4 class="card-title">{{classroom.name}}</h4>
+          <p class="card-text">
+            <span>Semester : {{classroom.semester}}</span><br>
+            <span>Section : {{classroom.section}}</span><br>
+            <span>Department : {{classroom.department}}</span><br>
+            <span>Batch : {{classroom.year_of_passing-4}}</span>
+          </p>
+          <a (click)="gotoDetail(classroom)" class="btn btn-primary">Enter class</a>
         </div>
       </div>
+    </div>
   </div>
 </div>

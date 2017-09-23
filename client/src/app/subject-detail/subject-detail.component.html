@@ -1,98 +1,143 @@
 <div *ngIf="subject">
-  <h2>{{subject.name}} subject!</h2>
-  <div>
-    <label>id: </label>{{subject._id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="subject.name" placeholder="name" /><br>
-    <label>id: </label>
-    <input [(ngModel)]="subject.id" placeholder="id" /><br>
-    <label>semester: </label>
-    <input [(ngModel)]="subject.semester" placeholder="semester" /><br>
-    <label>department: </label>
-    <input [(ngModel)]="subject.department" placeholder="department" /><br>
+  <div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+      <h4 class="page-title">Subject</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+      <ol class="breadcrumb">
+        <li><a href="#">Classroom</a></li>
+        <li>Subject</li>
+      </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="white-box">
+        <h3 class="box-title ">Subject - {{subject.name}}</h3>
+        <div>
+          <div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" [(ngModel)]="subject.name" id="name" required>
+            </div>
 
-    <form #portionForm="ngForm" (ngSubmit)="updatePortion(portionForm)" *ngIf="portionCompletion">
-      <ul class="demo-list-three mdl-list fluidic" *ngIf="attendance">
-        <li class="mdl-list__item mdl-list__item--three-line">
-          <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-avatar">person</i>
-          <label for="feb">February</label>
-          <input type="text" name="feb" id="feb" [(ngModel)]="portionCompletion.Feb"><br>
-        </span>
-        <span class="mdl-list__item-secondary-content">
-          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-        </span>
-        </li>
-        <li class="mdl-list__item mdl-list__item--three-line">
-          <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-avatar">person</i>
-          <label for="march">March</label>
-          <input type="text" name="march" id="march" [(ngModel)]="portionCompletion.March"><br>
-        </span>
-        <span class="mdl-list__item-secondary-content">
-          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-        </span>
-        </li>
-        <li class="mdl-list__item mdl-list__item--three-line">
-          <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-avatar">person</i>
-          <label for="april">April</label>
-          <input type="text" name="april" id="april" [(ngModel)]="portionCompletion.April"><br>
-        </span>
-        <span class="mdl-list__item-secondary-content">
-          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-        </span>
-        </li>
-        <li class="mdl-list__item mdl-list__item--three-line">
-          <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-avatar">person</i>
-          <label for="may">May</label>
-          <input type="text" name="may" id="may" [(ngModel)]="attendance.May"><br>
-        </span>
-        <span class="mdl-list__item-secondary-content">
-          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-        </span>
-        </li>
-      </ul>
-      <button type="submit">Update portions</button>
-    </form>
+            <div class="form-group">
+              <label for="section">Section</label>
+              <input type="text" class="form-control" [(ngModel)]="subject.section" id="section" required>
+            </div>
 
-    <h3>Instructors</h3>
+            <div class="form-group">
+              <label for="semester">Semester</label>
+              <input type="text" class="form-control" [(ngModel)]="subject.semester" id="semester" required>
+            </div>
 
-    <ul class="demo-list-three mdl-list fluidic" *ngIf="instructors">
-      <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let instructor of instructors" (click)=goToInstructorDetail(instructor)>
-        <span class="mdl-list__item-primary-content">
-        <i class="material-icons mdl-list__item-avatar">person</i>
-        <span>{{ instructor.name }} </span>
-        <span class="mdl-list__item-text-body">
-          <span>Department: {{instructor.department}}</span><br>
-          <span>Year of joining: {{instructor.year_of_joining}}</span>
-        </span>
-      </span>
-      <span class="mdl-list__item-secondary-content">
-        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-      </span>
-      </li>
-    </ul>
-   </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+            <div class="form-group">
+              <label for="department">Department</label>
+              <select class="form-control" id="department" [(ngModel)]="subject.department" required>
+                      <option *ngFor="let dept of departments" [value]="dept">{{dept}}</option>
+                    </select>
+            </div>
+            <button (click)="goBack()">Back</button>
+            <button (click)="save()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <button (click)="createInstructor()">Add Instructor</button>
+    <div class="col-md-6">
+        <div *ngIf="instructors">
+            <div class="row bg-title" style="margin: 1px 7px;">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <h4 class="page-title">Instructors</h4>
+              </div>
+              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                <ol class="breadcrumb">
+                  <li><button (click)="createInstructor()">Add instructor</button></li>
+                </ol>
+              </div>
+            </div>
+        </div>
 
-  <div class="mdl-grid" *ngIf="charts">
-    <div class="mdl-cell mdl-cell--6-col" *ngFor="let chart of charts">
-      <h3>{{chart.description}}</h3>
-      <x-chartist
-        [data]="chart.data"
-        [type]="chart.type"
-        [options]="chart.options"
-        [responsiveOptions]="chart.responsiveOptions"
-        [events]="chart.events">
-      </x-chartist>
-      <h4>{{chart.analysis}}</h4>
+        <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let instructor of instructors" (click)=goToInstructorDetail(instructor)>
+            <div class="white-box" (click)="goToInstructorDetail(instructor)" style="padding:10px;">
+                <div class="comment-center" >
+                    <div class="comment-body" style="width:100%;">
+                        <div class="user-img"> <img src="../assets/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
+                        <div class="mail-contnet">
+                            <h5>{{ instructor.name }}</h5> 
+                            <span class="mail-desc">
+                                <span>Department: {{instructor.department}}</span><br>
+                                <span>Year of joining: {{instructor.year_of_joining}}</span>
+                            </span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-left">August 28, 2017</span>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 
+
+
+  <form #portionForm="ngForm" (ngSubmit)="updatePortion(portionForm)" *ngIf="portionCompletion">
+    <ul class="demo-list-three mdl-list fluidic" *ngIf="attendance">
+      <li class="mdl-list__item mdl-list__item--three-line">
+        <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">person</i>
+            <label for="feb">February</label>
+            <input type="text" name="feb" id="feb" [(ngModel)]="portionCompletion.Feb"><br>
+          </span>
+        <span class="mdl-list__item-secondary-content">
+            <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+          </span>
+      </li>
+      <li class="mdl-list__item mdl-list__item--three-line">
+        <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">person</i>
+            <label for="march">March</label>
+            <input type="text" name="march" id="march" [(ngModel)]="portionCompletion.March"><br>
+          </span>
+        <span class="mdl-list__item-secondary-content">
+            <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+          </span>
+      </li>
+      <li class="mdl-list__item mdl-list__item--three-line">
+        <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">person</i>
+            <label for="april">April</label>
+            <input type="text" name="april" id="april" [(ngModel)]="portionCompletion.April"><br>
+          </span>
+        <span class="mdl-list__item-secondary-content">
+            <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+          </span>
+      </li>
+      <li class="mdl-list__item mdl-list__item--three-line">
+        <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">person</i>
+            <label for="may">May</label>
+            <input type="text" name="may" id="may" [(ngModel)]="attendance.May"><br>
+          </span>
+        <span class="mdl-list__item-secondary-content">
+            <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+          </span>
+      </li>
+    </ul>
+    <button type="submit">Update portions</button>
+  </form>
+
+
+  <div class="row" *ngIf="charts">
+    <div class="col-md-12">
+      <div class="col-md-6" *ngFor="let chart of charts">
+        <div class="white-box">
+          <h3 class="box-title">{{chart.description}}</h3>
+          <x-chartist [data]="chart.data" [type]="chart.type" [options]="chart.options" [responsiveOptions]="chart.responsiveOptions"
+            [events]="chart.events">
+          </x-chartist>
+          <h4>{{chart.analysis}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -14,11 +14,13 @@ import { SubjectDetailComponent } from './subject-detail/subject-detail.componen
 import { InstructorCreateComponent } from './instructor-create/instructor-create.component';
 import { InstructorDetailComponent } from './instructor-detail/instructor-detail.component';
 import { StudentSubjectDetailComponent } from './student-subject-detail/student-subject-detail.component';
+import { CreateClassroomComponent } from "./create-classroom/create-classroom.component";
+import { ProfileComponent } from './profile/profile.component'
 
 const menu_routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full' },
 	{ path: 'home',  component: HomeComponent }, //component: HomeComponent},
-	{ path: 'student-analytics',  component: StudentAnalyticsComponent },
+	{ path: 'student-analytics',  component: CreateClassroomComponent },
 	{ path: 'classroom-analytics',  component: ClassroomAnalyticsComponent },
 	{ path: 'classrooms', component: ClassroomComponent },
 	{ path: 'students', component: StudentComponent },
@@ -31,6 +33,8 @@ const menu_routes: Routes = [
   { path: 'subjectdetail/:id', component: SubjectDetailComponent },
   { path: 'subjectdetail/:id/:anotherid', component: StudentSubjectDetailComponent },
   { path: 'instructordetail/:id', component: InstructorDetailComponent },
+  { path: 'profile', component: ProfileComponent }
+  
 ];
 
 export const main_routing = RouterModule.forRoot(menu_routes);

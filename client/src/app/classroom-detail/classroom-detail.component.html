@@ -1,56 +1,111 @@
 <div *ngIf="classroom">
-  <h2>{{classroom.name}} details!</h2>
-  <div>
-    <label>id: </label>{{classroom._id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="classroom.name" placeholder="name" /><br>
-    <label>section: </label>
-    <input [(ngModel)]="classroom.section" placeholder="section" /><br>
-    <label>semester: </label>
-    <input [(ngModel)]="classroom.semester" placeholder="semester" /><br>
-    <label>department: </label>
-    <input [(ngModel)]="classroom.department" placeholder="department" /><br>
-    <label>year of passing: </label>
-    <input [(ngModel)]="classroom.year_of_passing" placeholder="year_of_passing" /><br>
-    <h3>Students</h3>
+  <div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+      <h4 class="page-title">Classroom</h4>
+    </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+      <ol class="breadcrumb">
+        <li><a href="#">Classroom</a></li>
+      </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="white-box">
+        <h3 class="box-title ">Class - {{classroom.name}}</h3>
+        <div>
+          <div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" [(ngModel)]="classroom.name" id="name" required>
+            </div>
 
-    <ul class="demo-list-three mdl-list fluidic" *ngIf="students">
-      <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let student of students" (click)=goToDetail(student)>
-        <span class="mdl-list__item-primary-content">
-        <i class="material-icons mdl-list__item-avatar">person</i>
-        <span>{{ student.first_name }} {{ student.last_name }}</span>
-        <span class="mdl-list__item-text-body">
-          <span>Department: {{student.department}}</span><br>
-          <span>Semester: {{student.semester}}</span>
-        </span>
-      </span>
-      <span class="mdl-list__item-secondary-content">
-        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-      </span>
-      </li>
-    </ul>
-    <button (click)="createStudent()">Add student</button>
+            <div class="form-group">
+              <label for="section">Section</label>
+              <input type="text" class="form-control" [(ngModel)]="classroom.section" id="section" required>
+            </div>
 
-    <h3>Subjects</h3>
-    <ul class="demo-list-three mdl-list fluidic" *ngIf="subjects">
-      <li class="mdl-list__item mdl-list__item--three-line" *ngFor="let subject of subjects" (click)=goToSubjectDetail(subject)>
-        <span class="mdl-list__item-primary-content">
-        <i class="material-icons mdl-list__item-avatar">person</i>
-        <span>{{ subject.name }}</span>
-        <span class="mdl-list__item-text-body">
-          <span>Department: {{subject.department}}</span><br>
-          <span>Semester: {{subject.semester}}</span>
-        </span>
-      </span>
-      <span class="mdl-list__item-secondary-content">
-        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
-      </span>
-      </li>
-    </ul>
-   </div>
-  <button (click)="createSubject()">Add subject</button>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+            <div class="form-group">
+              <label for="semester">Semester</label>
+              <input type="text" class="form-control" [(ngModel)]="classroom.semester" id="semester" required>
+            </div>
 
-</div>
+            <div class="form-group">
+              <label for="department">Year of passing</label>
+              <select class="form-control" id="department" [(ngModel)]="classroom.year_of_passing" required>
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                  </select>
+            </div>
+            <a (click)="goBack()" class="btn btn-primary">Back</a>
+            <a (click)="save()" class="btn btn-primary">Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="subjects">
+      <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+          <h4 class="page-title">Subjects</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+          <ol class="breadcrumb">
+            <li><a (click)="createSubject()" class="btn btn-primary">Add subject</a></li>
+          </ol>
+        </div>
+      </div>
+      </div>
+
+        <div class="row">
+          <div class="col-md-4" *ngFor="let subject of subjects">
+            <div class="white-box">
+              <div class="card">
+                <img class="card-img-top" src="../assets/subject.jpg" alt="Card image cap" style="width:100%;">
+                <div class="card-block">
+                  <h4 class="card-title">{{subject.name}}</h4>
+                  <p class="card-text">
+                    <span>Semester : {{subject.semester}}</span><br>
+                    <span>Department : {{subject.department}}</span><br>
+                  </p>
+                  <a (click)="goToSubjectDetail(subject)" class="btn btn-primary">open subject</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="students">
+            <div class="row bg-title">
+              <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Students</h4>
+              </div>
+              <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                  <li><a (click)="createStudent()" class="btn btn-primary">Add student</a></li>
+                </ol>
+              </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="students">
+            <div class="col-md-12 col-lg-12 col-sm-12" *ngFor="let student of students" (click)=goToDetail(student)>
+                <div class="white-box" (click)="goToDetail(student)" style="padding:10px;">
+                    <div class="comment-center" >
+                        <div class="comment-body" style="width:100%;">
+                            <div class="user-img"> <img src="../assets/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
+                            <div class="mail-contnet">
+                                <h5>{{ student.first_name }} {{ student.last_name }}</h5> 
+                                <span class="mail-desc">
+                                    <span>Department: {{student.department}}</span><br>
+                                    <span>Semester: {{student.semester}}</span>
+                                </span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-left">August 28, 2017</span>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+      </div>

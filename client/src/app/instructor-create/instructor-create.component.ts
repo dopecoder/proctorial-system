@@ -22,6 +22,8 @@ export class InstructorCreateComponent implements OnInit {
   instructor: Instructor;
   subject: Subject;
   classId : String;
+  years = [2012, 2013, 2014, 2015, 2016, 2017];
+  departments = ["Computer science", "Other department"];
 
   constructor(
     private subjectService: SubjectService,
@@ -31,8 +33,7 @@ export class InstructorCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.instructor = new Instructor('', '', '', 0);
-
+    this.instructor = new Instructor('', '', '', null, null, '');
     this.route.params
     //.switchMap((params: Params) => this.classroomService.getClassroom(params['id']))
     .subscribe(params => {
@@ -51,7 +52,7 @@ export class InstructorCreateComponent implements OnInit {
               console.log(instructor);
               this.instructor = instructor;
               this.updateSubject();
-              //this.goBack();
+              this.goBack();
       });
   }
 

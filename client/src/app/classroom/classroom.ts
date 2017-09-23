@@ -24,6 +24,8 @@ export class Classroom {
       this.semester = semester;
       this.department = department;
       this.year_of_passing = year_of_passing;
+      this.students = [];
+      this.subjects = [];
   }
 
   addStudent(studentReference : StudentReference) : void{

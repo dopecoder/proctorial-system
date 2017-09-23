@@ -19,6 +19,8 @@ import { InstructorService } from '../instructor/instructor.service'
 })
 
 export class InstructorDetailComponent implements OnInit {
+  departments = ["Computer science", "Other department"];
+  years = [2011, 2012, 2013, 2014, 2015, 2016, 2017]
   instructor: Instructor;
 
   constructor(

@@ -45,6 +45,7 @@ interface data {
 })
 
 export class StudentSubjectDetailComponent implements OnInit {
+  departments = ["Computer science", "Other department"];
   subject: Subject;
   instructors: Instructor[];
   student_marks: marksReference;
@@ -303,6 +304,11 @@ export class StudentSubjectDetailComponent implements OnInit {
         }
     }
 
+    if(!quarter1 && !quarter2){
+      analysis = "Enter enough data for analytics"
+      series = []
+      series.push([0, 0, 0, 0]);
+    }
     return {
       type: 'Line', // Attendance
       data: {labels:label, series:series},
@@ -347,6 +353,10 @@ export class StudentSubjectDetailComponent implements OnInit {
         }else if(num2 >= 5){
           analysis= "Excellent internal performance in this subject."
         }
+
+        console.log(int1);
+        console.log(int2);
+        console.log(int3);
         //label -> 0 1 2
         //series = [[0, int1], [null, int1, int2]]
         series.push([0, int1, null, null]);
@@ -364,6 +374,11 @@ export class StudentSubjectDetailComponent implements OnInit {
       description: "Internals",
       analysis: analysis
     } as Chart;*/
+    if(!int1 && !int2){
+      analysis = "Enter enough data for analytics"
+      series= []
+      series.push([0, 0, 0, 0]);
+    }
     return {
       type: 'Line', //Internals
       data: {labels:label, series: series},

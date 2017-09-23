@@ -1,0 +1,30 @@
+<form>
+  <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="section">Section</label>
+      <input type="text" class="form-control" id="section">
+    </div>
+
+    <div class="form-group">
+        <label for="semester">Semester</label>
+        <input type="text" class="form-control" id="semester">
+    </div>
+    
+    <div class="form-group">
+        <label for="year_of_passing">Year of passing</label>
+        <input type="text" class="form-control" id="year_of_passing">
+    </div>
+
+    <div class="form-group">
+      <label for="department">Department</label>
+      <select class="form-control" id="department" required>
+        <option *ngFor="let dept of departments" [value]="dept">{{dept}}</option>
+      </select>
+    </div>
+
+    <a type="submit" class="btn btn-success">Submit</a>
+  </form>

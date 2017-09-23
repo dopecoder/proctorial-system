@@ -4,9 +4,9 @@ import { Location }               from '@angular/common';
 
 import 'rxjs/add/operator/switchMap';
 
-import { Student, MarksList } from '../student/student'
-import { Classroom ,StudentReference } from '../classroom/classroom'
-import { StudentService } from '../student/student.service'
+//import { Student, MarksList } from '../student/student'
+import { Classroom } from '../classroom/classroom'
+//import { StudentService } from '../student/student.service'
 import { ClassroomService } from '../classroom/classroom.service'
 
 
@@ -14,22 +14,23 @@ import { ClassroomService } from '../classroom/classroom.service'
   selector: 'app-classroom-create',
   templateUrl: './classroom-create.component.html',
   styleUrls: ['./classroom-create.component.css'],
-  providers: [StudentService, ClassroomService]
+  providers: [ClassroomService]
 })
 
 export class ClassroomCreateComponent implements OnInit {
+
+  departments = ["Computer science", "Other department"];
   classroom: Classroom;
 
   constructor(
-    private studentService: StudentService,
     private classrooomService: ClassroomService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
 
   ngOnInit() {
-    this.classroom = new Classroom('', '', 0, '', 0);
-    this.classroom.students = [];
+    
+    this.classroom = new Classroom('', '', null, '', null);
   }
 
   save(): void {

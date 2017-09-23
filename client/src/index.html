@@ -1,25 +1,82 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Proctorial system</title>
-  <base href="">
-  <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
-  <script src="/node_modules/material-design-lite/material.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="/assets/palette.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-  <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-  <style type="text/css">
-    x-chartist {
-      display: block;
-      height: 400px;
-    }
-  </style>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>DSATM Proctorial system</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/html/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="assets/plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="assets/plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="assets/html/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/html/css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="assets/html/css/colors/blue-dark.css" id="theme" rel="stylesheet">
+    <!-- chartist library for plotting charts -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <style type="text/css">
+      x-chartist {
+        display: block;
+        height: 400px;
+      }
+    </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
+
 <body>
   <app-root>Loading...</app-root>
+
+<!-- /#wrapper -->
+<!-- jQuery -->
+<script src="../assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../assets/html/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="../assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+<!--slimscroll JavaScript -->
+<script src="../assets/html/js/jquery.slimscroll.js"></script>
+<!--Wave Effects -->
+<script src="../assets/html/js/waves.js"></script>
+<!--Counter js -->
+<script src="../assets/plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
+<script src="../assets/plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+<!--Morris JavaScript -->
+<script src="../assets/plugins/bower_components/raphael/raphael-min.js"></script>
+<script src="../assets/plugins/bower_components/morrisjs/morris.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="../assets/html/js/custom.min.js"></script>
+<script src="../assets/html/js/dashboard1.js"></script>
+<script src="../assets/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $.toast({
+        heading: 'Welcome to DSATM Proctorial system',
+        text: 'This is a simple web based college management system.',
+        position: 'top-right',
+        loaderBg: '#ff6849',
+        icon: 'info',
+        hideAfter: 5000,
+        stack: 6
+    })
+});
+</script>
 </body>
 </html>

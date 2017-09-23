@@ -29,16 +29,18 @@ export class Subject {
   name : String;
   department : String;
   semester : Number;
+  section: String;
   instructors : InstructorReference[];
   internal_marks : marksReference[];//added
   attendance : attendanceReference[];//added
   portionCompletion : portionReference;//added
 
-  constructor(name: String, id : String, department : String, semester : Number){
+  constructor(name: String, id : String, department : String, semester : Number, section : String){
       this.name = name;
       this.id = id;
       this.department = department;
       this.semester = semester;
+      this.section = section;
       this.instructors = [];
       this.internal_marks = [];
       this.attendance = [];
