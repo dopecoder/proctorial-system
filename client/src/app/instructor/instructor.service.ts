@@ -46,6 +46,7 @@ export class InstructorService {
 
   update(instructor: Instructor): Promise<Instructor> {
     const url = `${this.instructorUrl}/${instructor._id}`;
+    console.log(instructor);
     return this.http
       .put(url, JSON.stringify(instructor), {headers: this.headers})
       .toPromise()

@@ -22,6 +22,7 @@ export class ClassroomService {
 
   getClassroom(id: String): Promise<Classroom> {
     const url = `${this.classroomUrl}/${id}`;
+    console.log("Calling getClassroom with : " + url);
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Classroom)

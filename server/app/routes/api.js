@@ -6,6 +6,7 @@ var Student = require('../models/Student');
 var User = require('../models/User');
 var Instructor = require('../models/Instructor');
 var Subject = require('../models/Subject');
+var extend = require('extend'); // npm install extend
 // declare axios for making http requests
 //const axios = require('axios');
 const API = 'localhost';
@@ -336,7 +337,9 @@ router.route('/Instructor')
 			id : req.body.id,
 			department: req.body.department,
 			year_of_joining : req.body.year_of_joining,
-			//classrooms : req.body.students || Array()
+			subjects : req.body.subjects || Array(),
+			my_classrooms : req.body.classrooms || Array()
+						//classrooms : req.body.students || Array()
 		});
 		console.log(req.body.name);
 
@@ -372,6 +375,7 @@ router.route('/Instructor/:instructor_id')
 		res.send(err);
 		for (var i = 0; i < instructors.length; i++) {
 			if(instructors[i] == req.params.instructor_id){
+				console.log("Returning instructor");
 				res.json(instructors[i]);
 			}
 		}
@@ -388,10 +392,26 @@ router.route('/Instructor/:instructor_id')
 	res.json(instructors[i]);
 }
 }
-});*/
+});
+
+Instructor.findByIdAndUpdate(req.params.instructor_id,
+    {
+        "$set": { "name": req.body.name },
+				"$set": { "department": req.body.department },
+				"$set": { "year_of_joining": req.body.year_of_joining },
+				"$set": { "id": req.body.id },
+        "$push": { "subjects": req.body.subjects }
+    },
+    function (err, managerparent) {
+        if (err) throw err;
+        console.log(managerparent);
+    }
+);*/
+
+
 Instructor.findById(req.params.instructor_id, function(err, instructor) {
 	console.log("Updating instructor");
-	console.log(instructor);
+	console.log(req.body.subjects);
 	if (err)
 	res.send(err);
 	//update the required fields
@@ -400,13 +420,22 @@ Instructor.findById(req.params.instructor_id, function(err, instructor) {
 	instructor.id = req.body.id || instructor.id,
 	instructor.department = req.body.department || instructor.department;
 	instructor.year_of_joining = req.body.year_of_joining || instructor.year_of_joining;
+	//if(instructor.subjects == undefined)
+	//instructor.subjects = new Array();
+	//for(var subject=0; subject < req.body.subjects.length; subject++){
+	//instructor.subjects.extend(req.body.subjects);
+	//}
+	instructor.subjects = req.body.subjects || instructor.subjects;
+	instructor.my_classrooms = req.body.my_classrooms || instructor.my_classrooms;
 	//instructor.classrooms = req.body.classrooms || instructor.classrooms;
 
 	instructor.save(function(err, instructor) {
 		if (err)
-		res.send(err);
+			res.send(err);
+		console.log(instructor);
 		res.json(instructor);
 	});
+
 });
 })
 

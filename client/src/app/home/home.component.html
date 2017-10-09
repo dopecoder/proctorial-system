@@ -1,4 +1,303 @@
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Dashboard</h4> </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+            <li><a href="#">Dashboard</a></li>
+        </ol>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
 
-<div>
-  <h1>Welcome to Proctorial system</h1>
+
+
+
+<div *ngIf="facultyType">
+  <!--<div *ngIf="classrooms">{{classrooms.length}}</div>
+  <div *ngIf="totalNoOfStudents">{{totalNoOfStudents}}</div>
+  <div *ngIf="totalNoOfPlacementStudents">{{totalNoOfPlacementStudents}}</div>-->
+
+  <div class="row">
+      <!--col -->
+      <div *ngIf="classrooms">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="white-box" style="background-color:##3e4d6c!important;">
+              <div class="col-in row">
+                  <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
+                      <h5 class="text-muted vb">Classrooms handled</h5> </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                      <h3 class="counter text-right m-t-15 text-danger">{{classrooms.length}}</h3> </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="progress">
+                          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%"> <span class="sr-only">100% Complete (success)</span> </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+      <!-- /.col -->
+      <!--col -->
+      <div *ngIf="totalNoOfStudents">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="white-box">
+              <div class="col-in row">
+                  <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
+                      <h5 class="text-muted vb">Students handled</h5> </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                      <h3 class="counter text-right m-t-15 text-megna">{{totalNoOfStudents}}</h3> </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="progress">
+                          <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">  </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+      <!-- /.col -->
+      <!--col -->
+      <div *ngIf="totalNoOfPlacementStudents">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="white-box">
+              <div class="col-in row">
+                  <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
+                      <h5 class="text-muted vb">Students eleigible for placement</h5> </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                      <h3 class="counter text-right m-t-15 text-primary">{{totalNoOfPlacementStudents}}</h3> </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="progress">
+                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 65%"> </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+      <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+  <!--row -->
+  <div class="row" *ngIf="my_subjects">
+      <div class="col-sm-12">
+          <div class="white-box">
+            <h3 class="box-title">My Subjects
+                              <!--<div class="col-md-2 col-sm-4 col-xs-12 pull-right">
+                                <select class="form-control pull-right row b-none" id="current_subject" [(ngModel)]="my_subjects.current_subject" >
+                                  <option *ngFor="let sub of my_subjects.subjects" [value]="sub | json">{{sub.name}}</option>
+                                </select>
+                              </div>
+                              <button (click)="onChoice()">Go</button>-->
+                          </h3>
+
+
+              <div *ngFor="let an of analytics">
+              <h3 class="box-title">
+                {{an.name}}
+              </h3>
+              <div class="row" *ngIf="an.charts">
+                <div class="col-md-12">
+                  <div class="col-md-6" *ngFor="let chart of an.charts">
+                    <div class="white-box">
+                      <h3 class="box-title">{{chart.description}}</h3>
+                      <x-chartist [data]="chart.data" [type]="chart.type" [options]="chart.options" [responsiveOptions]="chart.responsiveOptions"
+                        [events]="chart.events">
+                      </x-chartist>
+                      <h4>{{chart.analysis}}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <!-- /.row -->
+
+
+</div>
+
+
+<div *ngIf="studentType">
+<!--
+<div *ngIf="!attendanceAvg">at</div>
+<div *ngIf="!aggregate">ag</div>
+<div *ngIf="!profile">pro</div>
+<div *ngIf="!student">st</div>
+<div *ngIf="!my_classroom">cs</div>
+<div *ngIf="!subjects">subjects</div>
+-->
+<div class="row">
+    <!--col -->
+    <div *ngIf="attendanceAvg">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box" style="background-color:##3e4d6c!important;">
+            <div class="col-in row">
+                <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
+                    <h5 class="text-muted vb">Attendance Average</h5> </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <h3 class="counter text-right m-t-15 text-danger">{{attendanceAvg}}</h3> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: attendanceAvgVal + '%'}"> <span class="sr-only">40% Complete (success)</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+    <!-- /.col -->
+    <!--col -->
+    <div *ngIf="aggregate">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box">
+            <div class="col-in row">
+                <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
+                    <h5 class="text-muted vb">Engineering Aggregate</h5> </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <h3 class="counter text-right m-t-15 text-megna">{{aggregate}}</h3> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"  [ngStyle]="{width: aggregateVal + '%'}">  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- /.col -->
+    <!--col -->
+    <div *ngIf="position">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box">
+            <div class="col-in row">
+                <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
+                    <h5 class="text-muted vb">Position in class</h5> </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <h3 class="counter text-right m-t-15 text-primary">{{position}}</h3> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: positionVal + '%'}"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+<!--row -->
+<div class="row" *ngIf="studentSubjects">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title">
+              Subject
+            </h3>
+            <div class="table-responsive">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th>SUBJECT NAME</th>
+                            <th>INTERNAL MARKS</th>
+                            <th>ATTENDANCE</th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>(max : 25, min : 0, avg : 15)</th>
+                            <th>(max : 100, min : 0, avg : 85)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let subject of studentSubjects">
+                            <td class="txt-oflo"><h3 class="box-title ">{{subject.name}}</h3></td>
+                            <td>
+                              <div>
+                                <div>Internal 1 : {{subject.ia.int1}}</div>
+                                <div>Internal 2 : {{subject.ia.int2}}</div>
+                                <div>Internal 3 : {{subject.ia.int3}}</div>
+                              </div>
+                            </td>
+
+                            <td>
+                              <div>
+                                <div>Quarter 1 : {{subject.attendance.q1}}</div>
+                                <div>Quarter 2 : {{subject.attendance.q2}}</div>
+                                <div>Quarter 3 : {{subject.attendance.q3}}</div>
+                              </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> <button (click)="goToDetail(student)">Detailed analysis</button> </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- row -->
+  <div class="row" *ngIf="charts">
+    <div class="col-md-12" *ngFor="let chart of charts">
+      <div class="white-box">
+        <h3 class="box-title">{{chart.description}}</h3>
+        <x-chartist [data]="chart.data" [type]="chart.type" [options]="chart.options" [responsiveOptions]="chart.responsiveOptions"
+          [events]="chart.events">
+        </x-chartist>
+        <h3 class="page-title">{{chart.analysis}}</h3>
+      </div>
+    </div>
+  </div>
+<!--/.row -->
+
+
+<!-- row -->
+<div class="row">
+    <div class="col-md-12 col-lg-6 col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title">AREAS OF IMPOVEMENT</h3>
+            <div class="comment-center">
+                <div class="comment-body">
+                    <div class="user-img"> <img src="../assets/images/alert.svg" alt="alert" class="img-circle"></div>
+                    <div class="mail-contnet">
+                        <h5>Pavan kumar</h5> <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
+                </div>
+                <div class="comment-body">
+                    <div class="user-img"> <img src="../assets/images/alert.svg" alt="alert" class="img-circle"> </div>
+                    <div class="mail-contnet">
+                        <h5>Sonu Nigam</h5> <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
+                </div>
+                <div class="comment-body b-none">
+                    <div class="user-img"> <img src="../assets/images/alert.svg" alt="alert" class="img-circle"> </div>
+                    <div class="mail-contnet">
+                        <h5>Arijit Sinh</h5> <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. </span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title">You have 5 new messages</h3>
+            <div class="message-center">
+                <a href="#">
+                    <div class="user-img"> <img src="../assets/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                    <div class="mail-contnet">
+                        <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
+                </a>
+                <a href="#">
+                    <div class="user-img"> <img src="../assets/plugins/images/users/sonu.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                    <div class="mail-contnet">
+                        <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
+                </a>
+                <a href="#">
+                    <div class="user-img"> <img src="../assets/plugins/images/users/arijit.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                    <div class="mail-contnet">
+                        <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.studentDashboard -->
 </div>

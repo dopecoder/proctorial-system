@@ -81,7 +81,7 @@ export class StudentDetailComponent implements OnInit {
             this.complete_detail = 0;
             this.getStudent(this.studentData._id);
     }
-    
+
   }
 
   getSubjects(): void {
@@ -107,22 +107,25 @@ export class StudentDetailComponent implements OnInit {
           this.student = student;
           console.log(this.student);
           this.getSubjects();
-
-          console.log(this.performOverallPerformance());
-          this.charts.push(this.performOverallPerformance());
+          var labelsAndSeries = this.studentService.getLabelsAndSeries(this.student);
+          var analysisAndAggr = this.studentService.getOverallPerformance(labelsAndSeries);
+          this.charts.push(this.studentService.getChartAnalyticsFor(analysisAndAggr, labelsAndSeries));
+          //console.log(this.performOverallPerformance());
+          //this.charts.push(this.performOverallPerformance());
         });
   }
 
+/*
   performOverallPerformance(){
     var labels = ['10', '12', '1', '2', '3', '4', '5', '6'];
     var series = [[this.student.marks.elementary, this.student.marks.associate, this.student.marks.first, this.student.marks.second, this.student.marks.third, this.student.marks.fourth, this.student.marks.fifth, this.student.marks.sixth]];
     //var series = [[80, 70, 80, 80 ,70 ,80 ,80]];
     var analysis = '';
-    /*if(this.portionCompletion.Feb){
-      var left = 8 - (this.portionCompletion.Feb as any);
-      var num = left / 3;
-      series.push([this.portionCompletion.Feb, num, num, num]);
-    }*/
+    //if(this.portionCompletion.Feb){
+    //  var left = 8 - (this.portionCompletion.Feb as any);
+    //  var num = left / 3;
+    //  series.push([this.portionCompletion.Feb, num, num, num]);
+    //}
     var avg_count = 0;
     var good_count = 0;
     var poor_count = 0;
@@ -173,7 +176,7 @@ export class StudentDetailComponent implements OnInit {
       }
     } as Chart;
   }
-
+*/
   goToSubjectDetail(subject: Subject): void {
     this.router.navigate(['/subjectdetail', subject._id, this.student._id]);
   }

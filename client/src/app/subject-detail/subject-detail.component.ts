@@ -180,7 +180,7 @@ export class SubjectDetailComponent implements OnInit {
     if(!cat1 && ! cat2 && !cat3 && !cat4){
       analysis = "Data needs to be updated for analystics"
     }
-    
+
     var labels = [cat1, cat2, cat3, cat4]
     return {
       type: 'Pie', //Student attendence falling range
@@ -238,7 +238,7 @@ export class SubjectDetailComponent implements OnInit {
     if(!cat1 && ! cat2 && !cat3 && !cat4 && !cat5){
       analysis = "Data needs to be updated for analystics"
     }
-    
+
 
     return {
       type: 'Bar', // Internals
@@ -328,8 +328,8 @@ export class SubjectDetailComponent implements OnInit {
   }
 
 
-  createInstructor(): void {
-    this.router.navigate(['/instructorcreate', this.subject._id]);
+  addInstructor(): void {
+    this.router.navigate(['/addInstructor', this.subject._id]);
   }
 
   save(): void {

@@ -1,7 +1,7 @@
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
         <h4 class="page-title">Instructor</h4> </div>
-    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
         <ol class="breadcrumb">
             <li><a href="#">Classroom</a></li>
             <li><a (click)="goBack()">Instructor</a></li>
@@ -13,37 +13,32 @@
 <div class="row">
     <div class="col-md-12">
         <div class="white-box">
-            <h3 class="box-title">Add Instructor</h3> 
-            <div>   
+            <h3 class="box-title">Add Instructor</h3>
+            <div>
                 <div class="form-group">
-                    <label for="name">Subject name</label>
+                    <label for="name">Instructor name</label>
                     <input type="text" class="form-control" [(ngModel)]="instructor.name" id="name" required>
                   </div>
-              
+
                   <div class="form-group">
                       <label for="semester">Semester</label>
                       <input type="text" class="form-control" [(ngModel)]="instructor.semester" id="semester" required>
                   </div>
-            
-                  <div class="form-group">
-                      <label for="section">Section</label>
-                      <input type="text" class="form-control" [(ngModel)]="instructor.section" id="section" required>
-                  </div>
-                  
+
                   <div class="form-group">
                       <label for="department">Department</label>
                       <select class="form-control" id="department" [(ngModel)]="instructor.department" required>
                         <option *ngFor="let dept of departments" [value]="dept">{{dept}}</option>
                       </select>
                   </div>
-            
+
                   <div class="form-group">
                       <label for="year_of_joining">Year of joining</label>
                       <select class="form-control" id="year_of_joining" [(ngModel)]="instructor.year_of_joining" required>
                         <option *ngFor="let year of years" [value]="year">{{year}}</option>
                       </select>
                   </div>
-            
+
               <a (click)="goBack()" class="btn btn-primary">Back</a>
               <a (click)="save()" class="btn btn-primary">Save</a>
             </div>

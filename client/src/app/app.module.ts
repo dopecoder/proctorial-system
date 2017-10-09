@@ -2,6 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+//import { AngularFireModule } from 'angularfire2';
+//import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
+
+
+
+import { AngularFireModule } from 'angularfire2';
+//import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { EmailComponent } from './email/email.component';
+import { SignupComponent } from './signup/signup.component';
+import { MembersComponent } from './members/members.component';
+import { AuthGuard } from './auth.service';
+//import { routes } from './app.routes';
+
+
+
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu.component';
@@ -13,6 +31,7 @@ import { ClassroomDetailComponent } from './classroom-detail/classroom-detail.co
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { ClassroomCreateComponent } from './classroom-create/classroom-create.component';
 import { StudentCreateComponent } from './student-create/student-create.component';
+import { StudentFilterComponent } from './student-filter/student-filter.component';
 
 import { StudentAnalyticsComponent } from './student-analytics/student-analytics.component';
 import { ClassroomAnalyticsComponent } from './classroom-analytics/classroom-analytics.component';
@@ -33,9 +52,24 @@ import { StudentSubjectDetailComponent } from './student-subject-detail/student-
 import { CreateClassroomComponent } from './create-classroom/create-classroom.component'
 import { ProfileComponent } from './profile/profile.component'
 
+
+  // Initialize Firebase
+  export const firebaseConfig = {
+    apiKey: "AIzaSyDCJ9tHgmpqk906GRAfhSqJOzbpLC8Quxc",
+    authDomain: "proctorial-system.firebaseapp.com",
+    databaseURL: "https://proctorial-system.firebaseio.com",
+    projectId: "proctorial-system",
+    storageBucket: "",
+    mesagingSenderId: "171077402137"
+  };
+
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    EmailComponent,
+    SignupComponent,
+    MembersComponent,
     MenuComponent,
     ClassroomComponent,
     StudentComponent,
@@ -58,16 +92,18 @@ import { ProfileComponent } from './profile/profile.component'
     SubjectDetailComponent,
     StudentSubjectDetailComponent,
     CreateClassroomComponent,
-    ProfileComponent
+    ProfileComponent,
+    StudentFilterComponent
   ],
   imports: [
     BrowserModule,
     ChartistModule,
     FormsModule,
     HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     main_routing
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

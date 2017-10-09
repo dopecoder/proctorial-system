@@ -278,6 +278,7 @@ export class StudentSubjectDetailComponent implements OnInit {
       //series = [[0, int1], [null, int1, int2]]
       series.push([0, quarter1]);
       series.push([null, quarter1, quarter2]);
+
     }else{
         //int1
         var cons = 30;
@@ -287,14 +288,6 @@ export class StudentSubjectDetailComponent implements OnInit {
           num2 = (225 - (quarter1 as any))/2;
           num3 = (225 - (quarter1 as any))/2;
         }
-
-        if(quarter1 >= 75){
-          analysis= "The student has enough attendance in this subject."
-        }else if(quarter1 >= 60){
-          analysis= "The student has less attendance in this subject."
-        }else if(quarter1 >= 45){
-          analysis= "The student has very less attendance in this subject. Needs attention!"
-        }
         //label -> 0 1 2
         //series = [[0, int1], [null, int1, int2]]
         series.push([0, quarter1, null, null]);
@@ -303,6 +296,15 @@ export class StudentSubjectDetailComponent implements OnInit {
           series.push([null, null, num2, num3]);
         }
     }
+
+    if(quarter1.valueOf() >= 75){
+      analysis= "The student has enough attendance in this subject."
+    }else if(quarter1.valueOf() >= 60){
+      analysis= "The student has less attendance in this subject."
+    }else if(quarter1.valueOf() >= 45){
+      analysis= "The student has very less attendance in this subject. Needs attention!"
+    }
+
 
     if(!quarter1 && !quarter2){
       analysis = "Enter enough data for analytics"
@@ -322,9 +324,13 @@ export class StudentSubjectDetailComponent implements OnInit {
     let int1 = this.student_marks.internal1;
     var int2 = this.student_marks.internal2;
     var int3 = this.student_marks.internal3;
+    var int3Analysis;
     var analysis = '';
     var label = ['0', '1', '2', '3'];
     var series = new Array();
+
+    var cons = 30;
+    var num2 = cons - int1.valueOf();
 
     if(int1 && int2){
       //int1+int2 -> Avg
@@ -332,26 +338,42 @@ export class StudentSubjectDetailComponent implements OnInit {
       //series = [[0, int1], [null, int1, int2]]
       series.push([0, int1]);
       series.push([null, int1, int2]);
+
+      if((int1.valueOf() + int2.valueOf()) < 30){
+        if((int1.valueOf() > int2.valueOf())){
+          int3Analysis = 30 - int1.valueOf();
+          series.push([null, null, int2, int3Analysis]);
+        }else{
+          int3Analysis = 30 - int2.valueOf();
+          series.push([null, null, int2, int3Analysis]);
+        }
+      }
+
+
     }else{
         //int1
-        var cons = 30;
-        var num2 = cons - (int1 as any);
+
         if(num2 > 25){
           num2 = 15;
           int3 = 15;
         }
-        if(int1 >= 15){
+    }
+        if(int1.valueOf() >= 20){
+          analysis= "Excellent internal performance in this subject."
+        }else if(int1.valueOf() >= 15){
           analysis= "Average internal performance in this subject."
-        }else if(int1 >= 20){
-          analysis= "Excellent internal performance in this subject."
-        }else if(num2 >= 20){
+        }else if(num2.valueOf() >= 20){
           analysis= "Poor internal performance in this subject. Needs attention!"
-        }else if(num2 >= 15){
+        }else if(num2.valueOf() >= 15){
           analysis= "Less than average internal performance in this subject."
-        }else if(num2 >= 10){
+        }else if(num2.valueOf() >= 10){
           analysis= "Good internal performance in this subject."
-        }else if(num2 >= 5){
+        }else if(num2.valueOf() >= 5){
           analysis= "Excellent internal performance in this subject."
+        }
+
+        if((int1.valueOf() + int2.valueOf()) < 30){
+          analysis= "The Student has less than average, he has to score " + int3Analysis + "/25 in the 3rd internals"
         }
 
         console.log(int1);
@@ -364,7 +386,7 @@ export class StudentSubjectDetailComponent implements OnInit {
         if(int3){
           series.push([null, null, num2, int3]);
         }
-    }
+
 
 
 

@@ -35,7 +35,7 @@
               <label for="department">Year of passing</label>
               <select class="form-control" id="department" [(ngModel)]="classroom.year_of_passing" required>
                     <option *ngFor="let year of years" [value]="year">{{year}}</option>
-                  </select>
+              </select>
             </div>
             <a (click)="goBack()" class="btn btn-primary">Back</a>
             <a (click)="save()" class="btn btn-primary">Save</a>
@@ -43,6 +43,38 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-6">
+          <div class="white-box">
+            <div>
+              <div class="form-group">
+                <label for="internals_select">Select Internal</label>
+                <select class="form-control" id="internals_select" [(ngModel)]="selectedInternal" required>
+                      <option *ngFor="let internal of internals" [value]="internal">{{internal}}</option>
+                </select><br>
+                <input type="file" #fileInput (change)="onFileChangeInternals($event)" multiple="false" placeholder="Excel Sheet" />
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="uploadInternals()">Upload Internals</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="white-box">
+              <div>
+                <div class="form-group">
+                  <label for="attendance_select">Select Attendance Quarter</label>
+                  <select class="form-control" id="attendance_select" [(ngModel)]="selectedAttendance" required>
+                        <option *ngFor="let q of quart" [value]="q">{{q}}</option>
+                  </select><br>
+                  <input type="file" #fileInput (change)="onFileChangeAttendance($event)" multiple="false" placeholder="Excel Sheet" />
+                </div>
+                <button type="submit" (click)="uploadAttendance()">Upload Attendance</button>
+              </div>
+            </div>
+          </div>
+      </div>
 
 
     <div *ngIf="subjects">
@@ -96,7 +128,7 @@
                         <div class="comment-body" style="width:100%;">
                             <div class="user-img"> <img src="../assets/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
                             <div class="mail-contnet">
-                                <h5>{{ student.first_name }} {{ student.last_name }}</h5> 
+                                <h5>{{ student.first_name }} {{ student.last_name }}</h5>
                                 <span class="mail-desc">
                                     <span>Department: {{student.department}}</span><br>
                                     <span>Semester: {{student.semester}}</span>

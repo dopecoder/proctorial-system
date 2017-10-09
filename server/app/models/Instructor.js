@@ -6,7 +6,9 @@ var InsructorSchema = new Schema({
   id : String,
   name : String,
   department : String,
-  year_of_joining : Number
+  year_of_joining : Number,
+  subjects : [String],
+  my_classrooms : [String] 
 });
 
 module.exports = mongoose.model(InstructorModel, InsructorSchema);

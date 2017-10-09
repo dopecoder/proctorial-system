@@ -1,0 +1,189 @@
+<div *ngIf="students">
+    <div class="row bg-title">
+      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Students</h4>
+      </div>
+      <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+        <ol class="breadcrumb">
+          <li><a>Students</a></li>
+        </ol>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!--row -->
+               <div class="row">
+                   <div class="col-sm-12">
+                       <div class="white-box">
+                           <h3 class="box-title">Filter Students
+                           </h3>
+                           <div class="table-responsive">
+                               <table class="table ">
+                                   <thead>
+                                       <tr>
+                                           <th>Filter type</th>
+                                           <th>Type of comparison</th>
+                                           <th>Value</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody>
+                                     <tr *ngIf="semesters">
+                                         <td class="txt-oflo">Semester</td>
+                                         <td>
+                                           <select class="form-control" id="aggregate" [(ngModel)]="filter.semester" >
+                                             <option *ngFor="let sem of semesters" [value]="sem">{{sem}}</option>
+                                           </select>
+                                         </td>
+                                         <td class="txt-oflo">
+                                          
+                                         </td>
+                                     </tr>
+                                       <tr>
+                                           <td class="txt-oflo">Aggregate</td>
+                                           <td>
+                                             <select class="form-control" id="aggregate" [(ngModel)]="filter.aggregate_type" >
+                                               <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                                             </select>
+                                           </td>
+                                           <td class="txt-oflo">
+                                             <input type="number" [(ngModel)]="filter.aggregate" >
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td class="txt-oflo">Internal 1</td>
+                                           <td>
+                                             <select class="form-control" id="aggregate" [(ngModel)]="filter.int1_type" >
+                                               <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                                             </select>
+                                           </td>
+                                           <td class="txt-oflo">
+                                             <input type="number" [(ngModel)]="filter.int1" >
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td class="txt-oflo">Internal 2</td>
+                                           <td>
+                                             <select class="form-control" id="aggregate" [(ngModel)]="filter.int2_type" >
+                                               <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                                             </select>
+                                           </td>
+                                           <td class="txt-oflo">
+                                             <input type="number" [(ngModel)]="filter.int2" >
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td class="txt-oflo">Internal 3</td>
+                                           <td>
+                                             <select class="form-control" id="aggregate" [(ngModel)]="filter.int3_type" >
+                                               <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                                             </select>
+                                           </td>
+                                           <td class="txt-oflo">
+                                             <input type="number" [(ngModel)]="filter.int3" >
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td class="txt-oflo">Attendance</td>
+                                           <td>
+                                             <select class="form-control" id="aggregate" [(ngModel)]="filter.attendance_type" >
+                                               <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                                             </select>
+                                           </td>
+                                           <td class="txt-oflo">
+                                             <input type="number" [(ngModel)]="filter.attendance" >
+                                           </td>
+                                       </tr>
+                                   </tbody>
+                               </table>
+                           <button (click)="search()">Search</button> </div>
+                       </div>
+                   </div>
+               </div>
+               <!-- /.row -->
+
+
+
+
+
+
+
+
+
+<!--<div class="row">
+    <div class="col-md-12">
+        <div class="white-box">
+            <h3 class="box-title">Filters</h3>
+                <!--<div>
+                    <div *ngIf="semesters">
+                    <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <select class="form-control" id="semester" [(ngModel)]="filter.semester" >
+                          <option *ngFor="let sem of semesters" [value]="sem">{{sem}}</option>
+                        </select>
+                    </div>
+                  </div>
+                    <div class="form-group">
+                        <label for="aggregate">Aggregate</label>
+                        <select class="form-control" id="aggregate" [(ngModel)]="filter.aggregate_type" >
+                          <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                        </select>
+                        <input type="number" [(ngModel)]="filter.aggregate" >
+                    </div>
+                    <div class="form-group">
+                        <label for="aggregate">Internal 1</label>
+                        <select class="form-control" id="aggregate" [(ngModel)]="filter.int1_type" >
+                          <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                        </select>
+                        <input type="number" [(ngModel)]="filter.int1" >
+                    </div>
+                    <div class="form-group">
+                        <label for="aggregate">Internal 2</label>
+                        <select class="form-control" id="aggregate" [(ngModel)]="filter.int2_type" >
+                          <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                        </select>
+                        <input type="number" [(ngModel)]="filter.int2" >
+                    </div>
+                    <div class="form-group">
+                        <label for="aggregate">Internal 3</label>
+                        <select class="form-control" id="aggregate" [(ngModel)]="filter.int3_type" >
+                          <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                        </select>
+                        <input type="number" [(ngModel)]="filter.int3" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="aggregate">Attendance</label>
+                        <select class="form-control" id="aggregate" [(ngModel)]="filter.attendance_type" >
+                          <option *ngFor="let op of options" [value]="op">{{op}}</option>
+                        </select>
+                        <input type="number" [(ngModel)]="filter.attendance" >
+                    </div>
+                <button (click)="search()">Search</button>
+              </div>
+        </div>
+    </div>
+</div>-->
+<div class="row" *ngIf="students">
+    <div class="col-md-12 col-lg-6 col-sm-12" *ngFor="let student of filteredList" (click)=goToDetail(student)>
+        <div class="white-box">
+            <div class="comment-center">
+                <div class="comment-body">
+                    <div class="user-img"> <img src="../assets/plugins/images/users/pawandeep.jpg" alt="user" class="img-circle"></div>
+                    <div class="mail-contnet">
+                        <h5>{{ student.first_name }} {{ student.last_name }}</h5>
+                        <span class="mail-desc">
+                            <span>Department: {{student.department}}</span><br>
+                            <span>Semester: {{student.semester}}</span>
+                        </span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-left">August 28, 2017</span>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

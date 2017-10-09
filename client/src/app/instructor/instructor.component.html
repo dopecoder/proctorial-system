@@ -1,28 +1,57 @@
-<div style="background-color:aquamarine; margin:10px;" >
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" (click)="createInstructor()">
-    Add instructor
-  </button>
+<div class="row bg-title">
+  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    <h4 class="page-title">Instructors</h4>
+  </div>
+  <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+    <ol class="breadcrumb">
+      <li><a href="#">Instructors</a></li>
+    </ol>
+  </div>
+  <!-- /.col-lg-12 -->
 </div>
-<div class="mdl-grid" *ngIf="instructors">
-  <div class="mdl-cell mdl-cell--4-col" *ngFor="let instructor of instructors">
-      <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">{{instructor.name}}</h2>
-          </div>
-        <div class="mdl-card__supporting-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Mauris sagittis pellentesque lacus eleifend lacinia...
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="gotoDetail(instructor)">
-            open
-          </a>
-        </div>
-        <div class="mdl-card__menu">
-          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-          <i class="material-icons">share</i>
-        </button>
-        </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-inverse" style="background-color: #1DE9B6; border-color: #333; padding:20px;">
+      <div class="card-block">
+        <h3 class="card-title" >Add Instructor</h3>
+        <p class="card-text">Start adding instructors right from here.</p>
+        <a class="btn btn-primary" (click)="createInstructor()">Add Instructor</a>
       </div>
+    </div>
   </div>
 </div>
+
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Instructors</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Subjects</th>
+                                            <th>Year Of Joining</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let instructor of instructors">
+                                            <td>{{instructor.name}}</td>
+                                            <td>subjects</td>
+                                            <td>{{instructor.year_of_joining}}</td>
+                                            <td *ngIf="selectState">
+                                              <a class="btn btn-primary" (click)="selectInstructor(instructor)">Select</a>
+                                            </td>
+                                            <td *ngIf="listState">
+                                              <a class="btn btn-primary" (click)="gotoDetail(instructor)">Detail</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->

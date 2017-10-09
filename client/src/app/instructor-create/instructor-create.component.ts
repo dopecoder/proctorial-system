@@ -33,14 +33,18 @@ export class InstructorCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.instructor = new Instructor('', '', '', null, null, '');
-    this.route.params
+    this.instructor = new Instructor('', '', '', null, null);
+    //this.route.params
     //.switchMap((params: Params) => this.classroomService.getClassroom(params['id']))
-    .subscribe(params => {
-            console.log('param = ' + params['id']);
-            this.classId = params['id'];
-            this.getSubject(params['id']);
-    });
+    //.subscribe(params => {
+    //        console.log('param = ' + params['id']);
+    //        this.classId = params['id'];
+    //        this.getSubject(params['id']);
+    //
+    //        if(this.subject){
+    //          // add subject to subject list
+    //        }
+    //});
   }
 
 
@@ -51,7 +55,7 @@ export class InstructorCreateComponent implements OnInit {
               console.log("Updating subject and created instructor");
               console.log(instructor);
               this.instructor = instructor;
-              this.updateSubject();
+              //this.updateSubject();
               this.goBack();
       });
   }
