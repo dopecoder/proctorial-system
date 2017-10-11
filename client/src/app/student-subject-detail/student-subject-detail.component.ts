@@ -387,7 +387,14 @@ export class StudentSubjectDetailComponent implements OnInit {
           series.push([null, null, num2, int3]);
         }
 
-
+	if(int1 && !int2 && !int3) {
+		var marks = 30 - int1.valueOf();
+		if(marks < 15) {
+			analysis = "The Student has to get merely " + marks + "/25 in second internals to get average."		
+		}else{
+			analysis="The Student has to get " + marks + "/25 in second internals to get average."
+		}
+	}
 
 
     /*return {

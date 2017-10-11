@@ -12,6 +12,8 @@ import { moveIn, fallIn } from '../router.animations';
 })
 export class SignupComponent implements OnInit {
 
+  email: string;
+  password: string;
   state: string = '';
   error: any;
 

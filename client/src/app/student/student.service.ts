@@ -23,7 +23,7 @@ interface Chart {
 export class StudentService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private studentUrl = 'http://localhost:8080/api/Student';  // URL to web api
+  private studentUrl = 'http://35.198.205.84:8080/api/Student';  // URL to web api
 
   constructor(private http: Http) { }
 

@@ -13,7 +13,6 @@ const API = 'localhost';
 
 router.route('/Classroom')
 
-// create a bear (accessed at POST http://localhost:8080/bears)
 .post(function(req, res) {
 
 	if(req.body.name == undefined || req.body.department == undefined || req.body.section == undefined || req.body.semester == undefined || req.body.year_of_passing == undefined){
@@ -470,6 +469,7 @@ router.route('/Subject')
 			section: req.body.section,
 			department: req.body.department,
 			semester : req.body.semester,
+			subject_code : req.body.subject_code,
 			instructors : req.body.instructors || Array(),
 			internal_marks : req.body.internal_marks || Array(),
 			attendance : req.body.attendance || Array(),
@@ -521,6 +521,7 @@ router.route('/Subject/:subject_id')
 		//classroom.update_fields(req.body);
 		subject.name = req.body.name || subject.name;
 		subject.id = req.body.id || subject.id,
+		subject.subject_code = req.body.subject_code || subject.subject_code;
 		subject.department = req.body.department || subject.department;
 		subject.section = req.body.section || subject.section;
 		subject.semester = req.body.semester || subject.semester;

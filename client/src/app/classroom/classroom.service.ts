@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 export class ClassroomService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private classroomUrl = 'http://localhost:8080/api/Classroom';  // URL to web api
+  private classroomUrl = 'http://35.198.205.84:8080/api/Classroom';  // URL to web api
 
   constructor(private http: Http) { }
 

@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 export class SubjectService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private subjectUrl = 'http://localhost:8080/api/Subject';  // URL to web api
+  private subjectUrl = 'http://35.198.205.84:8080/api/Subject';  // URL to web api
 
   constructor(private http: Http) { }
 

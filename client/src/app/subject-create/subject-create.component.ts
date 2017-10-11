@@ -36,7 +36,7 @@ export class SubjectCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.subject = new Subject('', '', '', null, '');
+    this.subject = new Subject('', '', '', null, '', '');
     //this.subject.portionCompletion = {Feb:0, March:0, April:0, May:0} as portionReference;
     //this.portionCompletion = this.subject.portionCompletion;
     this.route.params
@@ -74,7 +74,7 @@ export class SubjectCreateComponent implements OnInit {
       this.classroom.subjects = new Array();
     console.log("Subject =>");
     console.log(this.subject);
-    this.classroom.subjects.push({object_id:this.subject._id} as StudentReference);
+    this.classroom.subjects.push({object_id:this.subject._id, subject_code:this.subject.subject_code});
     console.log("Classroom =>");
     console.log(this.classroom);
     this.classroomService.update(this.classroom).then(()=> this.goBack());

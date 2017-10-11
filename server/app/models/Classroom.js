@@ -9,7 +9,7 @@ var ClassroomSchema = new Schema({
     department : String,
     year_of_passing : Number,
     students : [{object_id:String, usn:String}],
-    subjects : [{object_id:String}]
+    subjects : [{object_id:String, subject_code:String}]
 });
 
 module.exports = mongoose.model(ClassroomModel, ClassroomSchema);

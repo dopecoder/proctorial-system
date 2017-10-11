@@ -53,7 +53,7 @@
                 <select class="form-control" id="internals_select" [(ngModel)]="selectedInternal" required>
                       <option *ngFor="let internal of internals" [value]="internal">{{internal}}</option>
                 </select><br>
-                <input type="file" #fileInput (change)="onFileChangeInternals($event)" multiple="false" placeholder="Excel Sheet" />
+                <input type="file" #fileInternalInput (change)="onFileChangeInternals($event)" multiple="false" placeholder="Excel Sheet" />
               </div>
               <button type="submit" class="btn btn-primary" (click)="uploadInternals()">Upload Internals</button>
             </div>
@@ -68,7 +68,7 @@
                   <select class="form-control" id="attendance_select" [(ngModel)]="selectedAttendance" required>
                         <option *ngFor="let q of quart" [value]="q">{{q}}</option>
                   </select><br>
-                  <input type="file" #fileInput (change)="onFileChangeAttendance($event)" multiple="false" placeholder="Excel Sheet" />
+                  <input type="file" #fileAttendanceInput (change)="onFileChangeAttendance($event)" multiple="false" placeholder="Excel Sheet" />
                 </div>
                 <button type="submit" (click)="uploadAttendance()">Upload Attendance</button>
               </div>

@@ -5,6 +5,7 @@ export interface StudentReference {
 
 export interface SubjectReference {
   object_id : String;
+  subject_code : String;
 }
 
 

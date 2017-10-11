@@ -6,6 +6,7 @@ var SubjectSchema = new Schema({
   id : String,
   name : String,
   department : String,
+  subject_code : String,
   section : String,
   semester : Number,
   instructors : [{object_id:String}],

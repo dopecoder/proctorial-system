@@ -8,7 +8,7 @@ var app        = express();
 var morgan     = require('morgan');
 // configure app
 app.use(morgan('dev')); // log requests to the console
-
+console.log(process.env.HOST);
 // configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -39,7 +39,7 @@ app.get('/*',function(req,res,next){
 });
 
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:4200'); /*ALERT! : You need to change the 4200 port to whatever port you are running the client on, 
+    res.header('Access-Control-Allow-Origin', 'http://35.198.205.84'); /*ALERT! : You need to change the 4200 port to whatever port you are running the client on, 
 									* 	   if you are running the angular app at port 8080, 
 									*	   then you need to set the Access-Control-Allow-Origin to http://localhost:8080*/
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');

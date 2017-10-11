@@ -2,7 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2'
 import { Observable } from 'rxjs/Observable'
-import * as firebase from 'firebase'
+//import * as firebase from 'firebase'
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,7 @@ export class AppComponent {
     }
 }*/
 export class AppComponent {
-  private isLoggedIn: Boolean;
+  public isLoggedIn: Boolean;
   private uid: String;
   private home_link: String;
   private total_authorization : boolean = false;
